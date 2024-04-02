@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
-router.get('/', (req, res) => {
-    res.render('sample.ejs'); //gọi giao diện từ ejs 
-})
-router.get('/test', (req, res) => {
-    res.send("trang test");
-})
+const {getTestpage, getHomepage} = require('../controllers/testController')
+// router.Method('/route, handler)
+router.get('/', getHomepage);
+router.get('/test', getTestpage);
 
 module.exports = router;
