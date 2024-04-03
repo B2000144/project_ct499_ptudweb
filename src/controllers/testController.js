@@ -9,12 +9,12 @@ const getCreatePage = (req,res) =>{
     res.render('create.ejs');
 }
 const postCreateUser = async (req,res) =>{
-    let fname = req.body.fname;
-    let lname = req.body.lname;
+    let name = req.body.name;
     let email = req.body.email;
+    let city= req.body.city;
     console.log(req.body);
     // console.log(">>>>>>>> trả về",fname, email);
-    let [results,fields] = await conn.execute( `INSERT INTO User (email, name, city) VALUES (?,?,?)`, [email,fname,lname],);
+    let [results,fields] = await conn.query( `INSERT INTO User (email, name, city) VALUES (?,?,?)`, [email,name,city],);
     console.log(">>>>check results:",results);
     res.send('success');
 
