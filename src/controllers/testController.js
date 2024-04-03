@@ -1,3 +1,4 @@
+const conn = require('../config/database');
 const getTestpage = (req,res)=>{
     res.send('trang test');
 }

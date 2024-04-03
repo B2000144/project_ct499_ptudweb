@@ -3,20 +3,14 @@ const express = require('express');
 const webRoutes = require('./src/routes/web')
 const app = express();
 const configViewEngine = require('./src/config/viewEngine');
-const mysql = require('mysql2');
-const conn = mysql.createConnection({
-  host: 'localhost',
-  port:3307,
-  user: 'root',
-  password:'123456',
-  database: 'hoidanit',
-});
+const conn = require('./src/config/database');
+
 conn.query('SELECT * FROM User ',
 function (err, result,fields) {
   console.log("<<<<result",result);
-  console.log("<<<<fields",fields);
 }
-)
+);
+
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
 
