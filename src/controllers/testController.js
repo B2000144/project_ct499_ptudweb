@@ -1,11 +1,13 @@
 const conn = require('../config/database');
-const getTestpage = (req,res)=>{
-    res.send('trang test');
-}
+
 const getHomepage = (req,res) =>{
-    res.render('sample.ejs');
+    res.render('home.ejs');
+}
+const postCreateUser = (req,res) =>{
+    console.log(req.body);
+    res.send("trang tạo mới user");
 }
 module.exports = {
-    getTestpage,
-    getHomepage
+    getHomepage,
+    postCreateUser,
 }

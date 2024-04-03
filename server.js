@@ -16,7 +16,10 @@ const hostname = process.env.HOST_NAME;
 
 // import các thư mục public
 configViewEngine(app);
-//test connection
+
+//config req.body
+app.use(express.json()) // for json
+app.use(express.urlencoded({ extended: true })) // 
 
 // khai báo route
 app.use(webRoutes);
