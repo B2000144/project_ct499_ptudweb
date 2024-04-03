@@ -5,11 +5,7 @@ const app = express();
 const configViewEngine = require('./src/config/viewEngine');
 const conn = require('./src/config/database');
 
-conn.query('SELECT * FROM User ',
-function (err, result,fields) {
-  console.log("<<<<result",result);
-}
-);
+
 
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
@@ -17,7 +13,7 @@ const hostname = process.env.HOST_NAME;
 // import các thư mục public
 configViewEngine(app);
 
-//config req.body
+//config req.body lấy dữ liệu từ input
 app.use(express.json()) // for json
 app.use(express.urlencoded({ extended: true })) // 
 
