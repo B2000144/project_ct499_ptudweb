@@ -8,6 +8,17 @@ const getHomepage =  async (req,res) =>{
 const getCreatePage = (req,res) =>{
     res.render('create.ejs');
 }
+const getUpdatePage = (req,res) =>{
+    console.log(req.params);
+    res.render('update.ejs');
+}
+const postUpdateUser= async (req,res) =>{
+    let name = req.body.name;
+    let email = req.body.email;
+    let city= req.body.city;
+    let [results,fields] = await conn.query( `UPDATE  User SET (email, name, city) VALUES (?,?,?)`, [email,name,city],);
+    res.send("cập nhật hoàn thành");
+};
 const postCreateUser = async (req,res) =>{
     let name = req.body.name;
     let email = req.body.email;
@@ -16,7 +27,7 @@ const postCreateUser = async (req,res) =>{
     // console.log(">>>>>>>> trả về",fname, email);
     let [results,fields] = await conn.query( `INSERT INTO User (email, name, city) VALUES (?,?,?)`, [email,name,city],);
     console.log(">>>>check results:",results);
-    res.send('success');
+    res.send('tạo mới hoàn thành');
 
 }
 
@@ -24,5 +35,7 @@ const postCreateUser = async (req,res) =>{
 module.exports = {
     getHomepage,
     postCreateUser,
-    getCreatePage
+    getCreatePage,
+    getUpdatePage,
+    postUpdateUser
 }

@@ -20,6 +20,7 @@
       
         <table class="w3-table w3-striped">
           <tr>
+
             <th>Email</th>
             <th>F name</th>
             <th>L name</th>
@@ -30,7 +31,7 @@
                 <td><%=listUser.name %></td>
                 <td><%=listUser.city %></td>
                 <td><%=listUser.email %></td>
-                <td><button>Edit</button>|<button>Delete</button></td>
+                <td><a href="/update/<%= listUser.id%>">Edit</a>|<button>Delete</button></td>
               </tr>
             <% }); %>
         </table>
