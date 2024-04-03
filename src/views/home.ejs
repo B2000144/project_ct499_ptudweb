@@ -15,7 +15,6 @@
     </div>
 
     <div class="w3-container">
-        <%= JSON.stringify(listUsers)  %>
         <h2>Striped Table</h2>
         <p>The w3-striped class adds zebra-stripes to a table:</p>
       
@@ -26,25 +25,17 @@
             <th>L name</th>
             <th>action</th>
           </tr>
-          <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-            <td><button>Edit</button>|<button>Delete</button></td>
-          </tr>
-          <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-          </tr>
-          <tr>
-            <td>Adam</td>
-            <td>Johnson</td>
-            <td>67</td>
-          </tr>
+            <% listUsers.forEach(function(listUser){%>
+                <tr>
+                <td><%=listUser.name %></td>
+                <td><%=listUser.city %></td>
+                <td><%=listUser.email %></td>
+                <td><button>Edit</button>|<button>Delete</button></td>
+              </tr>
+            <% }); %>
         </table>
       </div>
 
-     
+    
 </body>
 </html>
