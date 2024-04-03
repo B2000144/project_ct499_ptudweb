@@ -8,9 +8,12 @@ const getHomepage =  async (req,res) =>{
 const getCreatePage = (req,res) =>{
     res.render('create.ejs');
 }
-const getUpdatePage = (req,res) =>{
-    console.log(req.params);
-    res.render('update.ejs');
+const getUpdatePage = async (req,res) =>{
+    const idUser = req.params.id;
+    let[results,fields] = await conn.query('SELECT * FROM User WHERE id = ?',[idUser]);
+    let user = results && results.length > 0 ? results[0] :{};
+    // console.log("check lay id: ",results);
+   return res.render('update.ejs', {listIdUser: user});
 }
 const postUpdateUser= async (req,res) =>{
     let name = req.body.name;
