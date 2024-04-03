@@ -1,5 +1,5 @@
 const conn = require('../config/database');
-const {getAllUsers,getIdUsers} = require("../services/CRUDService");
+const {getAllUsers,getIdUsers,updateUserById} = require("../services/CRUDService");
 const getHomepage =  async (req,res) =>{
     let results = await getAllUsers();
    return res.render('home.ejs',{listUsers: results});
@@ -15,11 +15,12 @@ const getUpdatePage = async (req,res) =>{
    return res.render('update.ejs', {listIdUser: user});
 }
 const postUpdateUser= async (req,res) =>{
+    let idUser = req.body.idUser;
     let name = req.body.name;
     let email = req.body.email;
     let city= req.body.city;
-    let [results,fields] = await conn.query( `UPDATE  User SET (email, name, city) VALUES (?,?,?)`, [email,name,city],);
-    res.send("cập nhật hoàn thành");
+    await updateUserById(email,name,city,idUser);
+    res.redirect('/');
 };
 const postCreateUser = async (req,res) =>{
     let name = req.body.name;

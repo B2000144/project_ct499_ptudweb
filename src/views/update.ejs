@@ -13,10 +13,12 @@
         <a class="active" href="/">Home</a>
         <a href="/create">Create</a>
       </div>
-<%=JSON.stringify(listIdUser) %>
-      <form class="form" action="/create-user" method="post">
+<!-- <%=JSON.stringify(listIdUser) %> -->
+      <form class="form" action="/update-user" method="post">
         <fieldset>
          <legend>Update a user:</legend>
+         <label  for="name">Id:</label>
+         <input  value="<%= listIdUser.id %>" type="text" id="name" name="idUser"><br><br>
          <label for="name">Name:</label>
          <input value="<%= listIdUser.name %>" type="text" id="name" name="name"><br><br>
          <label for="email">Email:</label>

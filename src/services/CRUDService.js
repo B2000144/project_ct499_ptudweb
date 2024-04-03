@@ -10,7 +10,12 @@ const getIdUsers = async (idUser)=>{
     return user;
     
 }
+const updateUserById = async (email,name,city,idUser)=>{
+    let [results,fields] = await conn.query( `UPDATE  User SET email = ?, name = ?, city = ? WHERE id =  ?`, [email,name,city,idUser],);
+
+}
 module.exports ={
     getAllUsers,
-    getIdUsers
+    getIdUsers,
+    updateUserById,
 }
