@@ -1,5 +1,5 @@
 const conn = require('../config/database');
-const {getAllUsers} = require("../services/CRUDService");
+const {getAllUsers,getIdUsers} = require("../services/CRUDService");
 const getHomepage =  async (req,res) =>{
     let results = await getAllUsers();
    return res.render('home.ejs',{listUsers: results});
@@ -10,8 +10,7 @@ const getCreatePage = (req,res) =>{
 }
 const getUpdatePage = async (req,res) =>{
     const idUser = req.params.id;
-    let[results,fields] = await conn.query('SELECT * FROM User WHERE id = ?',[idUser]);
-    let user = results && results.length > 0 ? results[0] :{};
+    let user = await getIdUsers(idUser)
     // console.log("check lay id: ",results);
    return res.render('update.ejs', {listIdUser: user});
 }
