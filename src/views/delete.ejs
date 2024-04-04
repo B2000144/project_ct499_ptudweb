@@ -17,6 +17,10 @@
       <form class="form" action="/delete-user" method="post">
         <fieldset>
          <legend>Delete user:</legend>
+         <div class="d-none">
+            <label for="id">ID:</label>
+            <input value="<%= listIdUser.id %>" type="text" id="id" name="id"><br><br>
+         </div>
          <label for="email">bạn có chắc muốn xóa user có Email:</label>
          <input value="<%= listIdUser.email %>" type="email" id="email" name="email"><br><br>
          <button>Detele</button>

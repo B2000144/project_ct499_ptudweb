@@ -1,6 +1,6 @@
 const { render } = require('pug');
 const conn = require('../config/database');
-const {getAllUsers,getIdUsers,updateUserById} = require("../services/CRUDService");
+const {getAllUsers,getIdUsers,updateUserById, deleteUserById} = require("../services/CRUDService");
 const getHomepage =  async (req,res) =>{
     let results = await getAllUsers();
    return res.render('home.ejs',{listUsers: results});
@@ -28,8 +28,10 @@ const postDeleteUser = async (req, res) =>{
     let user = await getIdUsers(idUser)
     res.render('delete.ejs',{listIdUser: user});
 }
-const  postHandleRemoveUser = (req, res) =>{
-    res.send("ok deleted");
+const  postHandleRemoveUser = async (req, res) =>{
+    const id = req.body.id;
+    await deleteUserById(id);
+    res.redirect("/");
 
 }
 const postCreateUser = async (req,res) =>{

@@ -12,10 +12,13 @@ const getIdUsers = async (idUser)=>{
 }
 const updateUserById = async (email,name,city,idUser)=>{
     let [results,fields] = await conn.query( `UPDATE  User SET email = ?, name = ?, city = ? WHERE id =  ?`, [email,name,city,idUser],);
-
+}
+const deleteUserById = async(id)=>{
+    let [results, fields] = await conn.query("DELETE FROM User WHERE id= ?",[id]);
 }
 module.exports ={
     getAllUsers,
     getIdUsers,
     updateUserById,
+    deleteUserById
 }
