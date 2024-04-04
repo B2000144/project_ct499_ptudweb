@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>delete</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/create">Create</a>
+      </div>
+<!-- <%=JSON.stringify(listIdUser) %> -->
+      <form class="form" action="/delete-user" method="post">
+        <fieldset>
+         <legend>Delete user:</legend>
+         <label for="email">bạn có chắc muốn xóa user có Email:</label>
+         <input value="<%= listIdUser.email %>" type="email" id="email" name="email"><br><br>
+         <button>Detele</button>
+        </fieldset>
+       </form>
+      </div>
+</body>
+</html>

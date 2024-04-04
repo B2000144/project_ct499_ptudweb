@@ -1,3 +1,4 @@
+const { render } = require('pug');
 const conn = require('../config/database');
 const {getAllUsers,getIdUsers,updateUserById} = require("../services/CRUDService");
 const getHomepage =  async (req,res) =>{
@@ -22,6 +23,15 @@ const postUpdateUser= async (req,res) =>{
     await updateUserById(email,name,city,idUser);
     res.redirect('/');
 };
+const postDeleteUser = async (req, res) =>{
+    const idUser = req.params.id;
+    let user = await getIdUsers(idUser)
+    res.render('delete.ejs',{listIdUser: user});
+}
+const  postHandleRemoveUser = (req, res) =>{
+    res.send("ok deleted");
+
+}
 const postCreateUser = async (req,res) =>{
     let name = req.body.name;
     let email = req.body.email;
@@ -40,5 +50,7 @@ module.exports = {
     postCreateUser,
     getCreatePage,
     getUpdatePage,
-    postUpdateUser
+    postUpdateUser,
+    postDeleteUser,
+    postHandleRemoveUser
 }
